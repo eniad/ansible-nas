@@ -175,7 +175,7 @@ onDemand = false # create certificate when container is created
   [acme.tlsChallenge]
 
   [[acme.domains]]
-  main = "ansible-nas.{{ ansible_nas_domain }}"
+  main = "{{ ansible_nas_hostname }}.{{ ansible_nas_domain }}"
 
 
   # we request a certificate for everything, because why not.
@@ -198,16 +198,20 @@ onDemand = false # create certificate when container is created
           "jackett.{{ ansible_nas_domain }}",
           "jellyfin.{{ ansible_nas_domain }}",
           "joomla.{{ ansible_nas_domain }}",
+          "krusader.{{ ansible_nas_domain }}",
           "lidarr.{{ ansible_nas_domain }}",
+          "mylar.{{ ansible_nas_domain }}",
           "miniflux.{{ ansible_nas_domain }}",
           "netdata.{{ ansible_nas_domain }}",
           "nextcloud.{{ ansible_nas_domain }}",
           "nzbget.{{ ansible_nas_domain }}",
           "ombi.{{ ansible_nas_domain }}",
           "openhab.{{ ansible_nas_domain }}",
+          "organizr.{{ ansible_nas_domain }}",
           "plex.{{ ansible_nas_domain }}",
           "portainer.{{ ansible_nas_domain }}",
           "pyload.{{ ansible_nas_domain }}",
+          "pytivo.{{ ansible_nas_domain }}",
           "radarr.{{ ansible_nas_domain }}",
           "serposcope.{{ ansible_nas_domain }}",
           "sickchill.{{ ansible_nas_domain }}",
@@ -217,5 +221,7 @@ onDemand = false # create certificate when container is created
           "transmission.{{ ansible_nas_domain }}",
           "transmission-openvpn.{{ ansible_nas_domain }}",
           "ubooquity.{{ ansible_nas_domain }}",
+          "utorrent.{{ ansible_nas_domain }}",
           "wallabag.{{ ansible_nas_domain }}",
+          "youtubedlmaterial.{{ ansible_nas_domain }}",
           "znc.{{ ansible_nas_domain }}"]
