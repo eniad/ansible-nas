@@ -12,8 +12,9 @@
 ansible_nas_hostname: goldstine
 
 ## Enable some applications
+airsonic_enabled: true
 heimdall_enabled: true
-jellyfin_enabled: true
+glances_enabled: true
 netdata_enabled: true
 portainer_enabled: true
 plex_enabled: true
