@@ -16,5 +16,6 @@ airsonic_enabled: true
 heimdall_enabled: true
 glances_enabled: true
 netdata_enabled: true
+nextcloud_enabled: true
 portainer_enabled: true
 plex_enabled: true
