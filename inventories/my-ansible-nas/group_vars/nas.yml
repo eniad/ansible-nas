@@ -8,10 +8,10 @@
 
 # Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
 
-# Example options
+## Options
 ansible_nas_hostname: goldstine
 
-## Enable some applications
+## Enable applications
 airsonic_enabled: true
 duplicati_enabled: true
 heimdall_enabled: true
@@ -20,3 +20,129 @@ netdata_enabled: true
 nextcloud_enabled: true
 portainer_enabled: true
 plex_enabled: true
+
+###
+### Samba
+###
+# The location where all shares will be created by default. Can be overridden on a per-share basis.
+# This path will be mounted to backup containers, Duplicati
+## Shares root
+samba_shares_root: /tank
+
+# Where stuffs are stored
+music_root: "{{ samba_shares_root }}/music"
+comics_root: "{{ samba_shares_root }}/comics"
+photos_root: "{{ samba_shares_root }}/photos"
+documents_root: "{{ samba_shares_root }}/documents"
+videos_root: "{{ samba_shares_root }}/videos"
+backups_root: "/media/disk3"
+
+# The description that'll appear next to your Ansible-NAS box when browsing your network
+samba_server_string: Goldstine
+
+# Shares you want published over Samba.
+samba_shares:
+  - name: music
+    comment: 'Music'
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ music_root }}"
+
+  - name: photos
+    comment: 'Pictures'
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ photos_root }}"
+
+  - name: comics
+    comment: 'Comics'
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ comics_root }}"
+
+  - name: daine
+    comment: "Daine's documents"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ documents_root }}/daine"
+
+  - name: court
+    comment: "Court's documents"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ documents_root }}/court"
+
+  - name: sam
+    comment: "Sam's documents"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ documents_root }}/sam"
+
+  - name: movies
+    comment: "General TV Movies"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ videos_root }}/general/movies"
+
+  - name: tvshows
+    comment: "General TV Shows"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ videos_root }}/general/tvshows"
+
+  - name: kidsmovies
+    comment: "Kids TV Movies"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ videos_root }}/kids/movies"
+
+  - name: kidstvshows
+    comment: "Kids TV Shows"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ videos_root }}/kids/tvshows"
+
+  - name: zmovies
+    comment: "Z TV Movies"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ videos_root }}/mature/movies"
+
+  - name: ztvshows
+    comment: "Z TV Shows"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ videos_root }}/mature/tvshows"
+
+  - name: backups
+    comment: "Media backup"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ backups_root }}"
+

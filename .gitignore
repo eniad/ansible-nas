@@ -10,3 +10,6 @@ roles
 
 # Session
 Session.vim
+
+# Pyenv
+.python-version
