@@ -94,3 +94,14 @@ samba_shares:
     browsable: yes
     path: "{{ backups_root }}"
 
+###
+### Plex
+###
+# If you're paranoid, set permissions to "ro" so Plex won't ever be able to
+# delete your files
+plex_movies_permissions: "ro"
+plex_tv_permissions: "ro"
+plex_photos_permissions: "ro"
+plex_podcasts_permissions: "ro"
+plex_music_permissions: "ro"
+plex_port: "32401"
