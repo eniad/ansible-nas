@@ -46,6 +46,22 @@ samba_shares:
     browsable: yes
     path: "{{ music_root }}"
 
+  - name: movies
+    comment: 'Movies'
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ movies_root }}"
+
+  - name: tv
+    comment: 'TV Episodes'
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ tv_root }}"
+
   - name: photos
     comment: 'Pictures'
     guest_ok: yes
