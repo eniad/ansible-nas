@@ -14,8 +14,9 @@ ansible_nas_hostname: goldstine
 ## Enable applications
 airsonic_enabled: true
 duplicati_enabled: true
-heimdall_enabled: true
 glances_enabled: true
+heimdall_enabled: true
+jellyfin_enabled: true
 netdata_enabled: true
 nextcloud_enabled: true
 portainer_enabled: true
