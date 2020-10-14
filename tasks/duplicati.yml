@@ -18,6 +18,7 @@
       - "{{ samba_shares_root }}:/source/shares:ro"
       - "{{ docker_home }}:/source/docker:ro"
       - "/etc/timezone:/etc/timezone:ro"
+      - "{{ backups_root }}:/source/backups:rw"
     restart_policy: unless-stopped
     memory: 1g
     labels:
