@@ -15,4 +15,4 @@
 # ansible-nas ansible_connection=local ansible_host=localhost
 
 [nas]
-goldstine ansible_user=eniad
+goldstine.local ansible_user=eniad

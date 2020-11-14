@@ -9,18 +9,23 @@
 # Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
 
 ## Options
-ansible_nas_hostname: goldstine
+ansible_nas_hostname: goldstine.local
+ansible_nas_timezone:
+ansible_nas_user: eniad
+ansible_nas_email:
+ansible_nas_domain:
 
 ## Enable applications
-airsonic_enabled: true
+# airsonic_enabled: true
 duplicati_enabled: true
-glances_enabled: true
+# glances_enabled: true
 heimdall_enabled: true
-jellyfin_enabled: true
-netdata_enabled: true
-nextcloud_enabled: true
+# jellyfin_enabled: true
+# netdata_enabled: true
+# nextcloud_enabled: true
 portainer_enabled: true
 plex_enabled: true
+ubooquity_enabled: true
 
 ###
 ### Samba
