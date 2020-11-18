@@ -44,6 +44,7 @@ mylar_enabled: false
 
 # Music
 airsonic_enabled: false
+maloja_enabled: false
 mymediaforalexa_enabled: false
 
 # News
@@ -107,7 +108,7 @@ pytivo_enabled: false
 serposcope_enabled: false
 
 # External Access
-# Traefik will allow access to certain applications externally. To enable this you'll either; a domain name that points to your 
+# Traefik will allow access to certain applications externally. To enable this you'll either; a domain name that points to your
 # home static IP address, the cloudflare with the cloudflare_ddns dynamic DNS container enabled, or use a dynamic DNS provider like no-ip.
 # You'll also need to map ports 80 and 443 from your router to your ansible-nas server, then enable the per-app "available_externally"
 # settings.
@@ -567,7 +568,7 @@ couchpotato_downloads_directory: "{{ downloads_root }}"
 couchpotato_torrents_directory: "{{ torrents_root }}"
 couchpotato_user_id: "0"
 couchpotato_group_id: "0"
-couchpotato_port: "5050" 
+couchpotato_port: "5050"
 
 ###
 ### Sickchill
@@ -692,6 +693,12 @@ airsonic_music_directory: "{{ music_root }}"
 airsonic_podcasts_directory: "{{ podcasts_root }}"
 airsonic_port: "4040"
 
+###
+### Maloja
+###
+maloja_available_externally: "false"
+maloja_data_directory: "{{ docker_home }}/maloja"
+maloja_port: "42010"
 
 ###
 ### CloudCmd

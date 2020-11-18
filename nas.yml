@@ -148,6 +148,10 @@
     when: (airsonic_enabled | default(False))
     tags: airsonic
 
+  - import_tasks: tasks/maloja.yml
+    when: (maloja_enabled | default(False))
+    tags: maloja
+
   - import_tasks: tasks/cloudflare_ddns.yml
     when: (cloudflare_ddns_enabled | default(False))
     tags: cloudflare_ddns
