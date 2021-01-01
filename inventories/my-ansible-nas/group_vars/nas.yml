@@ -21,7 +21,7 @@ ansible_nas_domain: goldstine.local
 # glances_enabled: true
 heimdall_enabled: true
 # jellyfin_enabled: true
-# maloja_enabled: true
+maloja_enabled: true
 # netdata_enabled: true
 # nextcloud_enabled: true
 portainer_enabled: true
