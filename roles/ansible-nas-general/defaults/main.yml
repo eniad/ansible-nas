@@ -2,6 +2,10 @@
 # Sets the hostname of your Ansible NAS
 ansible_nas_hostname: ansible-nas
 
+# Sets the anssible-nas user and group (same by default)
+ansible_nas_system_user: ansible-nas
+ansible_nas_system_group: "{{ ansible_nas_system_user }}"
+
 # Update all apt packages when playbook is run
 keep_packages_updated: false
 

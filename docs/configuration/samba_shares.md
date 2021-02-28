@@ -9,4 +9,4 @@ Ansible-NAS shares are defined in the `samba_shares` section within `group_vars/
 
 ## File Permissions
 
-Ansible-NAS creates an `ansible-nas` user and group on your server, which Samba will use to access the data in your shares. New data created will be permissioned correctly. However, if you have existing data this will need to be repermissioned so that Samba can read and serve it. An playbook is provided to do this for you - `permission_data.yml`. It is separated from the main Ansible-NAS playbook due to the time it can take to run with large amounts of data. You should only need to run this once.
+Ansible-NAS creates an `ansible-nas` (configurable) user and group on your server, which Samba will use to access the data in your shares. New data created will be permissioned correctly. However, if you have existing data this will need to be repermissioned so that Samba can read and serve it. An playbook is provided to do this for you - `permission_data.yml`. It is separated from the main Ansible-NAS playbook due to the time it can take to run with large amounts of data. You should only need to run this once.
