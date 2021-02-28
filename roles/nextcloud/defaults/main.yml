@@ -4,6 +4,7 @@ nextcloud_available_externally: "false"
 
 # directories
 nextcloud_data_directory: "{{ docker_home }}/nextcloud"
+nextcloud_local_storage: "{{ samba_shares_root }}"
 
 # network
 nextcloud_port: "8080"
