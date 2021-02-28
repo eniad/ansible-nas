@@ -7,6 +7,12 @@ Homepage: [https://nextcloud.com](https://nextcloud.com)
 
 Set `nextcloud_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
+### Version
+
+Nextcloud version can be set in `inventories/<your_inventory>/nas.yml` using `nextcloud_version: 20`. The default is `14` for backward compatibility. For available versions, see [Nextcloud Docker Official Images](https://hub.docker.com/_/nextcloud/).
+
+## External access
+
 Tread carefully.
 
 External access may require that you manually configure your Fully Qualified Domain Name (FQDN) as a trusted domain within the application.  There is an environment variable set up for this in the "nextcloud task" which will most likely make manual configuration unnecessary.  If you get the following [screenshot](https://docs.nextcloud.com/server/14/admin_manual/installation/installation_wizard.html#trusted-domains) warning when trying to access nextcloud externally you'll need to manually set it up.
