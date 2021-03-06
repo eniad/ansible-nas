@@ -93,15 +93,20 @@
         - firefly
       when: (firefly_enabled | default(False))
 
+    - role: get_iplayer
+      tags:
+        - get_iplayer
+      when: (get_iplayer_enabled | default(False))
+
     - role: gitea
       tags:
         - gitea
       when: (gitea_enabled | default(False))
 
-    - role: get_iplayer
+    - role: gitlab
       tags:
-        - get_iplayer
-      when: (get_iplayer_enabled | default(False))
+        - gitlab
+      when: (gitlab_enabled | default(False))
 
     - role: glances
       tags:
@@ -268,14 +273,15 @@
         - znc
       when: (znc_enabled | default(False))
 
+    - role: dokuwiki
+      tags:
+        - dokuwiki
+      when: (dokuwiki_enabled | default(False))
+
   tasks:
     - import_tasks: tasks/thelounge.yml
       when: (thelounge_enabled | default(False))
       tags: thelounge
-
-    - import_tasks: tasks/gitlab.yml
-      when: (gitlab_enabled | default(False))
-      tags: gitlab
 
     - import_tasks: tasks/timemachine.yml
       when: (timemachine_enabled | default(False))
