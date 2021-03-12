@@ -1,0 +1,36 @@
+---
+- name: Create Maloja Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ maloja_data_directory }}/data"
+
+- name: Maloja Docker Container
+  docker_container:
+    name: maloja
+    image: foxxmd/maloja:latest
+    pull: true
+    volumes:
+      - "{{ maloja_data_directory }}:/data:rw"
+    ports:
+      - "{{ maloja_port }}:42010"
+    env:
+      MALOJA_DEFAULT_PASSWORD: "{{ maloja_default_password }}"
+      MALOJA_SKIP_SETUP: "yes"
+      MALOJA_LOGGING: "{{ maloja_logging }}"
+      MALOJA_HOST: "{{ maloja_host }}"
+      MALOJA_LASTFM_API_KEY: "{{ maloja_lastfm_api_key }}"
+      MALOJA_LASTFM_API_SECRET: "{{ maloja_lastfm_api_key }}"
+      MALOJA_FANARTTV_API_KEY: "{{ maloja_fanarttv_api_key }}"
+      MALOJA_SPOTIFY_API_ID: "{{ maloja_spotify_api_id }}"
+      MALOJA_SPOTIFY_API_SECRET: "{{ maloja_spotify_api_secret }}"
+    restart_policy: unless-stopped
+    memory: "{{ maloja_memory }}"
+    labels:
+      traefik.enable: "{{ maloja_available_externally }}"
+      traefik.http.routers.maloja.rule: "Host(`{{ maloja_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.maloja.tls.certresolver: "letsencrypt"
+      traefik.http.routers.maloja.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.maloja.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.maloja.loadbalancer.server.port: "80"

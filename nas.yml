@@ -278,6 +278,11 @@
         - dokuwiki
       when: (dokuwiki_enabled | default(False))
 
+    - role: maloja
+      tags:
+        - maloja
+      when: (maloja_enabled | default(False))
+
   tasks:
     - import_tasks: tasks/thelounge.yml
       when: (thelounge_enabled | default(False))
@@ -338,7 +343,3 @@
     - import_tasks: tasks/pytivo.yml
       when: (pytivo_enabled | default(False))
       tags: pytivo
-
-    - import_tasks: tasks/maloja.yml
-      when: (maloja_enabled | default(False))
-      tags: maloja

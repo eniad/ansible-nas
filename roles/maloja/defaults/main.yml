@@ -1,0 +1,25 @@
+---
+# enable or disable the application
+maloja_enabled: false
+maloja_available_externally: "false"
+
+# directories
+maloja_data_directory: "{{ docker_home }}/maloja"
+maloja_torrents_root: "{{ torrents_root }}"
+
+# network
+maloja_hostname: "maloja"
+maloja_port: "42010"
+
+# specs
+maloja_memory: "1g"
+
+# application configuration
+maloja_default_password: "admin"
+maloja_logging: "yes"
+maloja_host: "0.0.0.0"
+maloja_lastfm_api_key: "none"
+maloja_lastfm_api_secret: "none"
+maloja_fanarttv_api_key: "none"
+maloja_spotify_api_id: "none"
+maloja_spotify_api_secret: "none"
