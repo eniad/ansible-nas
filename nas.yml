@@ -338,3 +338,7 @@
     - import_tasks: tasks/pytivo.yml
       when: (pytivo_enabled | default(False))
       tags: pytivo
+
+    - import_tasks: tasks/maloja.yml
+      when: (maloja_enabled | default(False))
+      tags: maloja
