@@ -15,6 +15,8 @@ maloja_port: "42010"
 maloja_memory: "1g"
 
 # application configuration
+# Setting can be set via environment variable.
+# See https://github.com/krateng/maloja/blob/master/settings.md for reasonable environment variables.
 maloja_default_password: "admin"
 maloja_logging: "yes"
 maloja_host: "0.0.0.0"
