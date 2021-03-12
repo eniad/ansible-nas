@@ -9,7 +9,7 @@
 - name: Maloja Docker Container
   docker_container:
     name: maloja
-    image: foxxmd/maloja:latest
+    image: joniator/maloja:latest
     pull: true
     volumes:
       - "{{ maloja_data_directory }}:/data:rw"
