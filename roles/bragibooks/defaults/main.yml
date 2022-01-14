@@ -1,0 +1,19 @@
+---
+# enable or disable the application
+bragibooks_enabled: false
+bragibooks_available_externally: "false"
+
+# directories
+bragibooks_data_directory: "{{ docker_home }}/bragibooks"
+bragibooks_audiobooks_directory: "{{ audiobooks_root }}"
+
+# uid / gid
+bragibooks_user_id: "1000"
+bragibooks_group_id: "1000"
+
+# network
+bragibooks_hostname: "bragibooks"
+bragibooks_port_http: "8800"
+
+# specs
+bragibooks_memory: "1g"

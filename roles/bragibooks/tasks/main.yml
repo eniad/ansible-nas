@@ -1,0 +1,37 @@
+---
+- name: Create Bragi Books Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    # mode: 0755
+  with_items:
+    - "{{ bragibooks_data_directory }}"
+    - "{{ bragibooks_data_directory }}/config"
+    - "{{ bragibooks_audiobooks_directory }}/done"
+    - "{{ bragibooks_audiobooks_directory }}/output"
+
+- name: bragibooks Docker Container
+  docker_container:
+    name: bragibooks
+    image: ghcr.io/djdembeck/bragibooks:main
+    pull: true
+    volumes:
+      - "{{ bragibooks_audiobooks_directory }}:/input:rw"
+      - "{{ bragibooks_audiobooks_directory }}/output:/output:rw"
+      - "{{ bragibooks_data_directory }}/config:/config:rw"
+    network_mode: "bridge"
+    ports:
+      - "{{ bragibooks_port_http }}:8000"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      PUID: "{{ bragibooks_user_id }}"
+      PGID: "{{ bragibooks_group_id }}"
+    restart_policy: unless-stopped
+    memory: "{{ bragibooks_memory }}"
+    labels:
+      traefik.enable: "{{ bragibooks_available_externally }}"
+      traefik.http.routers.bragibooks.rule: "Host(`{{ bragibooks_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.bragibooks.tls.certresolver: "letsencrypt"
+      traefik.http.routers.bragibooks.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.bragibooks.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.bragibooks.loadbalancer.server.port: "8000"
