@@ -14,6 +14,7 @@
     volumes:
       - "{{ calibreweb_data_directory }}/config:/config"
       - "{{ calibreweb_books_root }}:/books"
+      - "{{ calibreweb_comics_root }}:/comics"
     env:
       TZ: "{{ ansible_nas_timezone }}"
       PUID: "{{ calibreweb_user_id }}"

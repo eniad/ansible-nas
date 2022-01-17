@@ -68,6 +68,11 @@
         - calibre
       when: (calibre_enabled | default(False))
 
+    - role: calibreweb
+      tags:
+        - calibreweb
+      when: (calibreweb_enabled | default(False))
+
     - role: cloudcmd
       tags:
         - cloudcmd
@@ -326,10 +331,6 @@
     - import_tasks: tasks/mosquitto.yml
       when: (mosquitto_enabled | default(False))
       tags: mosquitto
-
-    - import_tasks: tasks/calibreweb.yml
-      when: (calibreweb_enabled | default(False))
-      tags: calibreweb
 
     - import_tasks: tasks/openhab.yml
       when: (openhab_enabled | default(False))
