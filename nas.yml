@@ -63,6 +63,11 @@
         - booksonic
       when: (booksonic_enabled | default(False))
 
+    - role: calibre
+      tags:
+        - calibre
+      when: (calibre_enabled | default(False))
+
     - role: cloudcmd
       tags:
         - cloudcmd

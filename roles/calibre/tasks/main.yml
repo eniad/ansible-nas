@@ -1,0 +1,36 @@
+---
+- name: Create Calibre Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "{{ calibre_data_directory }}/data"
+
+- name: Calibre Docker Container
+  docker_container:
+    name: calibre
+    image: linuxserver/calibre
+    pull: true
+    volumes:
+      - "{{ calibre_data_directory }}/data:/config:rw"
+      - "{{ calibre_books_directory }}:/books:rw"
+      - "{{ calibre_comics_directory }}:/comics:rw"
+    ports:
+      - "{{ calibre_desktop_port }}:8080"
+      - "{{ calibre_webserver_port }}:8081"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      PUID: "{{ calibre_user_id }}"
+      PGID: "{{ calibre_group_id }}"
+      PASSWORD: "{{ calibre_password }}"
+      CLI_ARGS: "{{ calibre_cli_args }}"
+    restart_policy: unless-stopped
+    memory: "{{ calibre_memory }}"
+    labels:
+      traefik.enable: "{{ calibre_available_externally }}"
+      traefik.http.routers.calibre.rule: "Host(`{{ calibre_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.calibre.tls.certresolver: "letsencrypt"
+      traefik.http.routers.calibre.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.calibre.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.calibre.loadbalancer.server.port: "8080"
