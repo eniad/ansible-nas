@@ -7,7 +7,7 @@ Calibre-Web is a web app providing a clean interface for browsing, reading and d
 
 ## Usage
 
-Set `calibre_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
+Set `calibreweb_enabled: true` in your `inventories/<your_inventory>/nas.yml` file.
 
 ## Specific Configuration
 
@@ -19,10 +19,10 @@ Requires Calibre ebook management program. Available for download [here](https:/
 
 ### eBook Conversion
 
-If you do not need eBook conversion you can disable it to save resources by setting the `calibre_ebook_conversion` variable in `group_vars/all.yml` file to be empty.
+If you do not need eBook conversion you can disable it to save resources by setting the `calibreweb_ebook_conversion` variable in `group_vars/all.yml` file to be empty.
 
- - Conversion enabled: `calibre_ebook_conversion: "linuxserver/calibre-web:calibre"`
+ - Conversion enabled: `calibreweb_ebook_conversion: "linuxserver/calibre-web:calibre"`
 
- - Conversion disabled: `calibre_ebook_conversion: ""`
+ - Conversion disabled: `calibreweb_ebook_conversion: ""`
 
-You can target just Calibre by appending `-t calibre` to your `ansible-playbook` command.
+You can target just Calibre-web by appending `-t calibreweb` to your `ansible-playbook` command.

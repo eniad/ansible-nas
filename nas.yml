@@ -322,9 +322,9 @@
       when: (mosquitto_enabled | default(False))
       tags: mosquitto
 
-    - import_tasks: tasks/calibre.yml
-      when: (calibre_enabled | default(False))
-      tags: calibre
+    - import_tasks: tasks/calibreweb.yml
+      when: (calibreweb_enabled | default(False))
+      tags: calibreweb
 
     - import_tasks: tasks/openhab.yml
       when: (openhab_enabled | default(False))
