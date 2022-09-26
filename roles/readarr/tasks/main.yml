@@ -9,7 +9,7 @@
 - name: Readarr
   docker_container:
     name: readarr
-    image: linuxserver/readarr
+    image: hotio/readarr
     pull: true
     volumes:
       - "{{ readarr_books_directory }}:/books:rw"
