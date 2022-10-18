@@ -182,6 +182,10 @@
         - joomla
       when: (joomla_enabled | default(False))
 
+    - role: kavita
+      tags:
+        - kavita
+
     - role: komga
       tags:
         - komga
