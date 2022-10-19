@@ -26,11 +26,8 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-          cache-dependency-path: ./website/package-lock.json
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
-        with:
-          cache-dependency-path: ./website/package-lock.json
