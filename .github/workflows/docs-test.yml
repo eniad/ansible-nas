@@ -20,8 +20,6 @@ jobs:
   test-deploy:
     name: Test deployment
     runs-on: ubuntu-latest
-    with:
-      cache-dependency-path: ./website/package-lock.json
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
