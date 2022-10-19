@@ -32,4 +32,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
-        working-directory: website
+        with:
+          cache-dependency-path: ./website/package-lock.json
