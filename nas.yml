@@ -395,6 +395,10 @@
         - timemachine
       when: (timemachine_enabled | default(False))
 
+    - role: tinymediamanager
+      tags:
+        - tinymediamanager
+
     - role: traefik
       tags:
         - traefik

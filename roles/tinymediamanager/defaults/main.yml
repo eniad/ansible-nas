@@ -1,0 +1,29 @@
+---
+tinymediamanager_enabled: false
+tinymediamanager_available_externally: false
+
+# directories
+tinymediamanager_data_directory: "{{ docker_home }}/tinymediamanager/data"
+tinymediamanager_addons_directory: "{{ docker_home }}/tinymediamanager/addons"
+tinymediamanager_movies_directory: "{{ movies_root }}"
+tinymediamanager_tv_directory: "{{ tv_root }}"
+
+# If you're paranoid, set permissions to "ro" so Emby won't ever be able to
+# delete your files
+tinymediamanager_movies_permissions: "rw"
+tinymediamanager_tv_permissions: "rw"
+
+# uid / gid
+tinymediamanager_user_id: "0"
+tinymediamanager_group_id: "0"
+
+# network
+tinymediamanager_port: "4000"
+tinymediamanager_hostname: "tinymediamanager"
+
+# specs
+tinymediamanager_memory: 1g
+
+# docker
+tinymediamanager_container_name: tinymediamanager
+tinymediamanager_image: tinymediamanager/tinymediamanager:latest

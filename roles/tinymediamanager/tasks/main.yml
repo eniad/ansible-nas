@@ -1,0 +1,44 @@
+---
+- name: Start TinyMediaManager
+  block:
+    - name: Create TinyMediaManager Directories
+      file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ tinymediamanager_data_directory }}"
+        - "{{ tinymediamanager_addons_directory }}"
+
+    - name: TinyMediaManager Docker Container
+      docker_container:
+        name: "{{ tinymediamanager_container_name }}"
+        image: "{{ tinymediamanager_image }}"
+        pull: true
+        volumes:
+          - "{{ tinymediamanager_data_directory }}:/data:rw"
+          - "{{ tinymediamanager_movies_directory }}:/movies:{{ tinymediamanager_movies_permissions }}"
+          - "{{ tinymediamanager_tv_directory }}:/tv:{{ tinymediamanager_tv_permissions }}"
+        ports:
+          - "{{ tinymediamanager_port }}:4000"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          PUID: "{{ tinymediamanager_user_id }}"
+          PGID: "{{ tinymediamanager_group_id }}"
+        restart_policy: unless-stopped
+        memory: "{{ tinymediamanager_memory }}"
+        labels:
+          traefik.enable: "{{ tinymediamanager_available_externally | string }}"
+          traefik.http.routers.tinymediamanager.rule: "Host(`{{ tinymediamanager_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.tinymediamanager.tls.certresolver: "letsencrypt"
+          traefik.http.routers.tinymediamanager.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.tinymediamanager.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.tinymediamanager.loadbalancer.server.port: "4000"
+  when: tinymediamanager_enabled is true
+
+- name: Stop TinyMediaManager
+  block:
+    - name: Stop TinyMediaManager
+      docker_container:
+        name: "{{ tinymediamanager_container_name }}"
+        state: absent
+  when: tinymediamanager_enabled is false
